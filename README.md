@@ -1,61 +1,118 @@
-# Benchmark — Quitandinha Online
+# Benchmark de Segurança da Informação — Quitandinha Online
 
-**Data:** 10/08/2026
-**Sistema:** Quitandinha Online
-**Objetivo:** Avaliar o desempenho, a usabilidade e o funcionamento do supermercado online em situações comuns de compra.
+**Data:** 10/08/2026  
+**Sistema:** Quitandinha Online  
+**Objetivo:** Avaliar a segurança do supermercado online com base nos pilares da Segurança da Informação.
 
-## Caso 1 — Realização de uma compra
+---
 
-**Cenário:** Cliente acessa o Quitandinha Online e realiza uma compra com diferentes produtos.
+## Pilares avaliados
 
-**Procedimento:**
+| Pilar | Objetivo |
+|---|---|
+| **Confidencialidade** | Garantir que informações sejam acessadas somente por pessoas autorizadas. |
+| **Integridade** | Garantir que os dados não sejam alterados de forma indevida. |
+| **Disponibilidade** | Garantir que o sistema e os serviços estejam disponíveis quando necessários. |
+| **Autenticidade** | Garantir que usuários e sistemas sejam realmente quem afirmam ser. |
+| **Não Repúdio** | Garantir que uma ação realizada não possa ser negada posteriormente. |
 
-1. Acessar o site do Quitandinha Online.
-2. Pesquisar por produtos, como arroz, feijão, leite e frutas.
-3. Adicionar os produtos ao carrinho.
-4. Conferir quantidades e valores.
-5. Informar o endereço de entrega.
-6. Selecionar a forma de pagamento.
-7. Finalizar o pedido.
+---
 
-**Resultado esperado:**
+# Caso 1 — Acesso e proteção dos dados do cliente
 
-* Os produtos devem ser adicionados corretamente ao carrinho.
-* Os preços e quantidades devem ser calculados corretamente.
-* O endereço deve ser validado.
-* O pedido deve ser confirmado sem erros.
-* O cliente deve receber uma confirmação do pedido.
+### Cenário
 
-## Caso 2 — Produto indisponível
+Um cliente acessa sua conta no Quitandinha Online para consultar seus dados pessoais, endereço, histórico de pedidos e informações relacionadas às compras.
 
-**Cenário:** Cliente tenta comprar um produto que está sem estoque.
+### Objetivo
 
-**Procedimento:**
+Verificar se o sistema protege as informações do cliente contra acessos não autorizados.
 
-1. Acessar o Quitandinha Online.
-2. Pesquisar por um produto indisponível.
-3. Tentar adicionar o produto ao carrinho.
-4. Verificar a mensagem apresentada pelo sistema.
+### Pilares envolvidos
 
-**Resultado esperado:**
+- **Confidencialidade**
+- **Autenticidade**
+- **Integridade**
 
-* O sistema deve informar claramente que o produto está indisponível.
-* O produto não deve ser adicionado ao carrinho como se estivesse disponível.
-* O cliente deve receber uma alternativa, quando possível, como escolher outro produto ou ativar uma notificação de disponibilidade.
+### Teste
 
-## Critérios avaliados
+1. O usuário deve realizar login utilizando suas credenciais.
+2. O sistema deve validar corretamente usuário e senha.
+3. Após a autenticação, o cliente deve conseguir acessar somente seus próprios dados.
+4. Deve ser verificado se um usuário consegue acessar informações pertencentes a outro cliente.
+5. Alterações nos dados cadastrais devem exigir uma sessão autenticada.
 
-| Critério               | Caso 1 | Caso 2 |
-| ---------------------- | ------ | ------ |
-| Funcionamento do site  | ✓      | ✓      |
-| Busca de produtos      | ✓      | ✓      |
-| Carrinho               | ✓      | ✓      |
-| Controle de estoque    | —      | ✓      |
-| Cálculo de preços      | ✓      | —      |
-| Finalização da compra  | ✓      | —      |
-| Mensagens de erro      | —      | ✓      |
-| Experiência do usuário | ✓      | ✓      |
+### Resultado esperado
 
-## Conclusão
+- Usuários não autenticados não devem acessar dados privados.
+- Um cliente não deve conseguir visualizar dados de outro cliente.
+- As credenciais devem ser protegidas.
+- Alterações não autorizadas nos dados devem ser impedidas.
+- O sistema deve manter a integridade das informações armazenadas.
 
-A benchmark realizada em **10/08/2026** tem como objetivo verificar se o Quitandinha Online consegue atender corretamente às principais necessidades de seus clientes. Os dois casos analisam tanto o fluxo normal de uma compra quanto uma situação excepcional de produto indisponível, permitindo identificar possíveis problemas de funcionamento, estoque e experiência do usuário.
+### Avaliação
+
+| Critério | Resultado esperado |
+|---|---|
+| Login | Funcionamento correto |
+| Controle de acesso | Usuário acessa somente seus dados |
+| Proteção de dados | Dados privados protegidos |
+| Integridade | Alterações somente por usuários autorizados |
+| Autenticidade | Identidade do usuário validada |
+
+---
+
+# Caso 2 — Indisponibilidade do sistema durante uma compra
+
+### Cenário
+
+Um grande número de clientes acessa o Quitandinha Online simultaneamente para realizar compras.
+
+### Objetivo
+
+Verificar se o sistema consegue permanecer disponível e preservar as informações das compras durante um período de alta demanda.
+
+### Pilares envolvidos
+
+- **Disponibilidade**
+- **Integridade**
+- **Confidencialidade**
+
+### Teste
+
+1. Simular vários acessos simultâneos ao sistema.
+2. Realizar pesquisas de produtos.
+3. Adicionar produtos ao carrinho.
+4. Simular a finalização de pedidos.
+5. Verificar o comportamento do sistema durante o aumento da quantidade de acessos.
+6. Verificar se os pedidos e valores permanecem corretos.
+
+### Resultado esperado
+
+- O sistema deve permanecer disponível durante períodos de alta demanda.
+- O carrinho não deve perder produtos indevidamente.
+- Os valores dos produtos devem permanecer íntegros.
+- Pedidos não devem ser duplicados ou alterados incorretamente.
+- Informações dos clientes devem continuar protegidas.
+
+### Avaliação
+
+| Critério | Resultado esperado |
+|---|---|
+| Disponibilidade | Sistema continua acessível |
+| Carrinho | Produtos permanecem corretos |
+| Integridade | Dados do pedido não são alterados |
+| Processamento | Pedidos processados corretamente |
+| Confidencialidade | Dados dos clientes continuam protegidos |
+
+---
+
+# Conclusão
+
+A benchmark do **Quitandinha Online**, realizada em **10/08/2026**, avalia situações relacionadas aos principais pilares da Segurança da Informação.
+
+O **Caso 1** concentra-se principalmente na **Confidencialidade, Autenticidade e Integridade**, verificando a proteção das informações dos clientes e o controle de acesso.
+
+O **Caso 2** concentra-se principalmente na **Disponibilidade e Integridade**, verificando se o sistema permanece funcional durante períodos de alta demanda sem comprometer os dados das compras.
+
+A aplicação desses testes permite identificar possíveis falhas de segurança e verificar se o Quitandinha Online mantém seus dados e serviços protegidos.
